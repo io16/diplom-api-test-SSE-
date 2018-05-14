@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.tahometer.auth</groupId>
+    <artifactId>base</artifactId>
+    <version>0.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <!--<module>util</module>-->
+
+        <!--<module>core</module>-->
+        <!--<module>db</module>-->
+        <!--<module>rest</module>-->
+
+        <!--<module>main</module>-->
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>10</java.version>
+        <vertx.version>3.5.1</vertx.version>
+        <junit.platform.version>1.1.0</junit.platform.version>
+        <junit.jupiter.version>5.1.0</junit.jupiter.version>
+        <exec.mainClass>com.tahometer.auth.main.Main</exec.mainClass>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>${junit.platform.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <!-- vertx.io -->
+        <dependency><groupId>io.vertx</groupId><artifactId>vertx-core</artifactId><version>${vertx.version}</version></dependency>
+        <dependency><groupId>io.vertx</groupId><artifactId>vertx-rx-java2</artifactId><version>${vertx.version}</version></dependency>
+        <dependency><groupId>io.vertx</groupId><artifactId>vertx-web</artifactId><version>${vertx.version}</version></dependency>
+        <dependency><groupId>io.vertx</groupId><artifactId>vertx-mysql-postgresql-client</artifactId><version>${vertx.version}</version></dependency>
+        <dependency><groupId>io.vertx</groupId><artifactId>vertx-auth-jwt</artifactId><version>${vertx.version}</version></dependency>
+
+        <!-- DI -->
+        <dependency><groupId>com.google.inject</groupId><artifactId>guice</artifactId><version>4.2.0</version><classifier>no_aop</classifier></dependency>
+        <dependency><groupId>com.google.inject.extensions</groupId><artifactId>guice-assistedinject</artifactId><version>4.2.0</version></dependency>
+
+        <!-- logging -->
+        <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId><version>1.8.0-beta2</version></dependency>
+        <dependency><groupId>org.apache.logging.log4j</groupId><artifactId>log4j-slf4j-impl</artifactId><version>2.11.0</version></dependency>
+
+        <!-- unit testing -->
+        <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-api</artifactId><version>${junit.jupiter.version}</version><scope>test</scope></dependency>
+        <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-engine</artifactId><version>${junit.jupiter.version}</version><scope>test</scope></dependency>
+        <dependency><groupId>org.junit.jupiter</groupId><artifactId>junit-jupiter-params</artifactId><version>${junit.jupiter.version}</version><scope>test</scope></dependency>
+        <dependency><groupId>org.junit.platform</groupId><artifactId>junit-platform-launcher</artifactId><version>${junit.platform.version}</version><scope>test</scope></dependency>
+        <dependency><groupId>org.mockito</groupId><artifactId>mockito-core</artifactId><version>2.17.0</version><scope>test</scope></dependency>
+        <dependency><groupId>org.mockito</groupId><artifactId>mockito-junit-jupiter</artifactId><version>2.17.0</version><scope>test</scope></dependency>
+
+        <!-- JSON -->
+        <dependency><groupId>com.alibaba</groupId><artifactId>fastjson</artifactId><version>1.2.46</version></dependency>
+
+    </dependencies>
+
+</project>
